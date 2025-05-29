@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Doto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+    <title>Portafolio</title>
+</head>
+<body>
+    <audio id="background-music" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    <div id="radio">
+        <div id="screen">
+            <div id="page-list">
+                <p>Página 1: Landing Page</p>
+                <p>Página 2: Proyectos</p>
+                <p>Página 3: Habilidades</p>
+                <p>Página 4: Currículum</p>
+            </div>
+        </div>
+        <div id="controles">
+            <div id="volume-dial">
+                <hr>
+            </div>
+            <div id="buttons">
+                <button></button>
+                <button></button>
+                <button></button>
+                <button></button>
+            </div>
+            <div id="chanel-dial">
+                <hr>
+            </div>
+        </div>
+        <div id="speaker">
+            <div class="speaker-hole"></div>
+            <div class="speaker-hole"></div>
+            <div class="speaker-hole"></div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div class="page active" id="landing-page">
+            <div class="landing-content">
+                <div class="text-content">
+                    <div class="neon-content">
+                        <div id="gif-container">
+                            <img src="assets/car.gif" alt="Car Animation" class="car-gif">
+                        </div>
+                        <article>
+                            <h1 class="neon-text">Bienvenido a mi Portafolio</h1>
+                            <p class="neon-text">
+                                ¡Hola y bienvenido/a a mi rincón digital! Soy Felipe Aguilar, y aquí podrás explorar un poco de mi mundo: mi pasión por la programación, la música, los videojuegos, los circuitos electrónicos y mucho más.
+                            </p>
+                            <p class="neon-text">
+                                <strong>¿Cómo navegar?</strong><br>
+                                Esta página está diseñada como un radio vintage. ¡Puedes interactuar con ella como si estuvieras sintonizando tus estaciones favoritas!
+                            </p>
+                            <p class="neon-text">
+                                <strong>Perilla derecha (o botones laterales):</strong> Gírala para cambiar de "estación" (sección) y descubrir mis proyectos, habilidades e intereses.
+                            </p>
+                            <p class="neon-text">
+                                <strong>Perilla izquierda:</strong> Ajusta el "volumen" (brillo/contraste) para personalizar tu experiencia.
+                            </p>
+                            <p class="neon-text">
+                                <strong>Botones inferiores:</strong> Si prefieres ir directo al grano, úsalos para saltar a cualquier sección.
+                            </p>
+                            <p class="neon-text">
+                                Conéctate y explora… ¡Espero que disfrutes tu visita!
+                            </p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page" id="projects">
+            <h1>Proyectos</h1>
+            <div id="project-cards-container">
+                <a href="https://github.com/nadissa1508/Breakout" target="_blank" class="project-card">
+                    <h2>Proyecto 1: Breakout</h2>
+                    <p>Un juego clásico de romper bloques que utiliza hilos para procesar las acciones del jugador y la física del juego. Este proyecto demuestra el uso eficiente de la programación concurrente para manejar múltiples tareas simultáneamente.</p>
+                    <img src="assets/notes.png" alt="Breakout Game" style="width: 100%; height: auto; border-radius: 10px;">
+                </a>
+                <a href="https://github.com/nadissa1508/Green_guard" target="_blank" class="project-card">
+                    <h2>Proyecto 2: Green Guard</h2>
+                    <p>Una aplicación móvil educativa que enseña a los usuarios sobre sostenibilidad y reciclaje. Incluye consejos prácticos, desafíos interactivos y un diseño amigable para fomentar hábitos ecológicos en la vida diaria.</p>
+                    <img src="assets/notes.png" alt="Green Guard App" style="width: 100%; height: auto; border-radius: 10px;">
+                </a>
+                <a href="https://github.com/FelipeAP04/Ecommerce" target="_blank" class="project-card">
+                    <h2>Proyecto 3: Ecommerce</h2>
+                    <p>Una tienda en línea dedicada a consolas retro, desarrollada con Vite y React. Este proyecto incluye un diseño moderno, funcionalidad de carrito de compras y una experiencia de usuario optimizada.</p>
+                    <img src="assets/notes.png" alt="Ecommerce Retro Consoles" style="width: 100%; height: auto; border-radius: 10px;">
+                </a>
+            </div>
+        </div>
+        <div class="page" id="skills">
+            <h1>Habilidades</h1>
+            <!-- <div class="decor pick1"></div>
+            <div class="decor pick2"></div>
+            <div class="decor pick3"></div>
+            <div class="decor pick4"></div>
+            <div class="decor pick5"></div>
+            <div class="decor pick6"></div> -->
+            <div class="decor sticks"></div>
+            <div class="decor sticks2"></div>
+            <div class="skill-section">
+                <h2>Idiomas</h2>
+                <div class="skills-row">
+                    <div class="skill">
+                        <p>Español (nativo)</p>
+                    </div>
+                    <div class="skill">
+                        <p>Inglés (intermedio-avanzado)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="skill-section">
+                <h2>Lenguajes de Programación</h2>
+                <div class="skill skill-html">
+                    <p>HTML (avanzado)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill skill-css">
+                    <p>CSS (avanzado)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill skill-js">
+                    <p>JavaScript (intermedio-avanzado)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill skill-java">
+                    <p>Java (intermedio-bajo)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill skill-php">
+                    <p>PHP (intermedio)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill skill-go">
+                    <p>Go (bajo)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill skill-vb">
+                    <p>Visual Basic (intermedio)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill skill-react-vue">
+                    <p>React y Vue (intermedio)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <div class="skill skill-kotlin">
+                    <p>Kotlin (intermedio)</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page" id="resume">
+            <div class="resume-content">
+                <h1>Currículum</h1>
+                <div class="resume-container">
+                    <a href="assets/curriculum.pdf" download="Curriculum_Felipe_Aguilar.pdf">
+                        <img src="assets/curriculum.jpg" alt="Currículum" class="resume-poster">
+                    </a>
+                    <div class="contact-info">
+                        <h2>Contacto</h2>
+                        <p><strong>GitHub:</strong> <a href="https://github.com/FelipeAP04" target="_blank">FelipeAP04</a></p>
+                        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/lipito_py?igsh=d3NtaHhuZjRoMmxv" target="_blank">@lipito_py</a></p>
+                        <p><strong>Email:</strong> felipe.aguila.fe@gmail.com / agu23195@uvg.edu.gt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
