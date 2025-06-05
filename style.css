@@ -2,31 +2,51 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     color: white;
     font-family: 'Doto', Arial, sans-serif;
     overflow-x: hidden;
-    background-color: #f5f5f5;
+    background: linear-gradient(to bottom, #D57744 70%, #75322A 30%);
+}
+
+#radio-container {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
 }
 
 #radio {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 550px;
-    height: 275px;
+    width: 85%;
+    height: 35%;
     background-color: #a67c52;
     border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 10px;
     border: 5px solid #8b5a2b;
+    position: absolute;
+    z-index: 2;
+    bottom: 7px;
+    left: 25px;
+}
+
+#radio-rack {
+    width: 510px;
+    height: 644px;
+    background-image: url('assets/radio_rack.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
 }
 
 #controles{
@@ -57,12 +77,12 @@ body {
 
 #page-list > p{
     color:#ffffff84;
-    font-size: 1rem;
+    font-size: 0.7rem;
     margin: 0 ;
 }
 
 #page-list > p.current {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #fff;
     margin: 2px;
 }
@@ -117,17 +137,37 @@ hr {
     display: block;
 }
 
+#content-container {
+    height: 100%;
+    position: fixed;
+    bottom: 0px; 
+    right: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
 #content {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 65%;
+    width: 97%;
     height: 75%;
     background-color: #4a5d8c;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     color: white;
+    position: absolute;
+    z-index: 2;
+    top: 7px;
+}
 
+#content-tv {
+    width: 1015px;
+    height: 100%;
+    background-image: url('assets/Content_tv.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
 }
 
 #landing-page {
@@ -288,8 +328,8 @@ hr {
 .project-card img {
     margin-top: 10px;
     border-radius: 10px;
-    height: 100%; /* Ensure the image fills the card height */
-    object-fit: cover; /* Crop the image to fit within the card */
+    height: 100%;
+    object-fit: cover;
 }
 
 #skills {
@@ -584,16 +624,44 @@ hr {
 }
 
 @media (max-width: 768px) {
+    #radio-container {
+        height: 40%;
+        width: 100%;
+        bottom: 0px;
+    }
+
+    #content-container {
+        height: 60%;
+        width: 100%;
+        top: 0px;
+    }
+
+    #content-tv {
+        width: 0;
+        height: 0;
+    }
+
+    #radio_rack, #content {
+        width: 100%;
+        height: 100%;
+        background-image: none;
+    }
+    
     body {
         flex-direction: column;
     }
 
     #radio {
         width: 100%;
-        height: 200px;
+        height: 100%;
         padding: 5px;
         bottom: 0px;
         left: 0px;
+    }
+
+    .page.active {
+        width: 100%;
+        height: 100%;
     }
 
     #page-list > p{
@@ -623,7 +691,7 @@ hr {
     #content {
         position: static;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         max-height: calc(100vh - 215px);
         overflow: hidden;
         margin-bottom: 10px;

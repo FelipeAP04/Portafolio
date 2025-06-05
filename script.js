@@ -24,28 +24,50 @@ function updateScreenContent() {
 
 function rotateDial(dial, callback) {
     let startAngle = 0;
-    let currentRotation = 0; // Track the current rotation
+    let currentRotation = 0;
+    let touchStartAngle = 0;
+
+    const getTouchAngle = (touch, element) => {
+        const rect = element.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        return Math.atan2(touch.clientY - centerY, touch.clientX - centerX) * (180 / Math.PI);
+    };
 
     const onMouseMove = (event) => {
         const rect = dial.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        const angle = Math.atan2(event.clientY - centerY, event.clientX - centerX) * (180 / Math.PI);
+        const angle = Math.atan2(event.clientY - centerY, event.clientX - centerY) * (180 / Math.PI);
 
         let deltaAngle = angle - startAngle;
 
-        // Handle boundary crossing
         if (deltaAngle > 180) deltaAngle -= 360;
         if (deltaAngle < -180) deltaAngle += 360;
 
-        // Update the current rotation and clamp it between 0 and 360
         currentRotation = Math.min(Math.max(currentRotation + deltaAngle, 0), 360);
 
         dial.style.transform = `rotate(${currentRotation}deg)`;
         callback(currentRotation);
 
-        // Update the start angle for the next movement
         startAngle = angle;
+    };
+
+    const onTouchMove = (event) => {
+        event.preventDefault();
+        const touch = event.touches[0];
+        const angle = getTouchAngle(touch, dial);
+        
+        let deltaAngle = angle - touchStartAngle;
+        
+        if (deltaAngle > 180) deltaAngle -= 360;
+        if (deltaAngle < -180) deltaAngle += 360;
+
+        currentRotation = Math.min(Math.max(currentRotation + deltaAngle, 0), 360);
+        dial.style.transform = `rotate(${currentRotation}deg)`;
+        callback(currentRotation);
+
+        touchStartAngle = angle;
     };
 
     const onMouseUp = () => {
@@ -53,11 +75,24 @@ function rotateDial(dial, callback) {
         document.removeEventListener('mouseup', onMouseUp);
     };
 
+    const onTouchEnd = () => {
+        document.removeEventListener('touchmove', onTouchMove);
+        document.removeEventListener('touchend', onTouchEnd);
+    };
+
+    dial.addEventListener('touchstart', (event) => {
+        event.preventDefault();
+        const touch = event.touches[0];
+        touchStartAngle = getTouchAngle(touch, dial);
+        document.addEventListener('touchmove', onTouchMove);
+        document.addEventListener('touchend', onTouchEnd);
+    });
+
     dial.addEventListener('mousedown', (event) => {
         const rect = dial.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        startAngle = Math.atan2(event.clientY - centerY, event.clientX - centerX) * (180 / Math.PI);
+        startAngle = Math.atan2(event.clientY - centerY, event.clientX - centerY) * (180 / Math.PI);
         document.addEventListener('mousemove', onMouseMove);
         document.addEventListener('mouseup', onMouseUp);
     });
@@ -70,22 +105,25 @@ rotateDial(volumeDial, (rotation) => {
 
 function changePage(newIndex) {
     const content = document.getElementById('content');
-    pages[currentPageIndex]?.classList.remove('active'); // Remove active class from current page
+    
+    pages.forEach(page => {
+        page.style.display = 'none';
+    });
 
-    // Add static effect
     content.classList.add('static-effect');
 
     setTimeout(() => {
-        currentPageIndex = newIndex; // Set the new page index
-        pages[currentPageIndex]?.classList.add('active'); // Add active class to the new page
-        updateScreenContent(); // Update the screen content
+        currentPageIndex = newIndex;
+        
+        pages[currentPageIndex].style.display = 'block';
+        pages[currentPageIndex].classList.add('active');
+        
+        updateScreenContent();
 
-        // Remove static effect after animation
         content.classList.remove('static-effect');
-    }, 500); // Match the duration of the static effect animation
+    }, 500);
 }
 
-// Update button click functionality
 buttons.forEach((button, index) => {
     button.addEventListener('click', () => {
         if (index !== currentPageIndex) {
@@ -94,13 +132,11 @@ buttons.forEach((button, index) => {
     });
 });
 
-// Update channel dial functionality
 rotateDial(chanelDial, (rotation) => {
-    const newIndex = Math.floor((rotation / 90)) % pages.length; // Map rotation to page index
+    const newIndex = Math.floor((rotation / 90)) % pages.length;
     if (newIndex !== currentPageIndex) {
         changePage(newIndex);
     }
 });
 
-// Initialize the screen content on page load
 updateScreenContent();
