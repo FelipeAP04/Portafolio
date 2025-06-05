@@ -13,18 +13,20 @@ body {
 }
 
 #radio-container {
-    position: fixed;
-    bottom: 0px;
-    left: 0px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 2;
+    height: 87.23%;
+    width: 33.25%;
 }
 
 #radio {
-    width: 85%;
-    height: 35%;
+    height: 37.4%;
+    width: 91.52%;
     background-color: #a67c52;
     border-radius: 15px;
     display: flex;
@@ -40,8 +42,8 @@ body {
 }
 
 #radio-rack {
-    width: 510px;
-    height: 644px;
+    width: 100%;
+    height: 100%;
     background-image: url('assets/radio_rack.png');
     background-size: cover;
     background-position: center;
@@ -138,8 +140,9 @@ hr {
 }
 
 #content-container {
-    height: 100%;
-    position: fixed;
+    height: 99.47%;
+    width: 66.24%;
+    position: absolute;
     bottom: 0px; 
     right: 0px;
     display: flex;
@@ -149,19 +152,19 @@ hr {
 }
 
 #content {
-    width: 97%;
-    height: 75%;
-    background-color: #4a5d8c;
+    width: 96.13%;
+    height: 74.51%;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     color: white;
-    position: absolute;
+    position: relative;
     z-index: 2;
-    top: 7px;
+    top: 10px;
+    right: -20px;
 }
 
 #content-tv {
-    width: 1015px;
+    width: 100%;
     height: 100%;
     background-image: url('assets/Content_tv.png');
     background-size: cover;
@@ -637,8 +640,8 @@ hr {
     }
 
     #content-tv {
-        width: 0;
-        height: 0;
+        width: 100%;
+        height: 100%;
     }
 
     #radio_rack, #content {
@@ -673,8 +676,8 @@ hr {
     }
 
     #volume-dial, #chanel-dial {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     background-color: #e0e0e0;
     border-radius: 50%;
     display: flex;
